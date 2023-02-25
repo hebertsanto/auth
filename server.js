@@ -32,6 +32,11 @@ app.use('/', LoginRoutes)
 app.use('/', RegisterRoutes)
 app.use('/', Page)
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 })
