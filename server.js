@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-app.set('view engine', 'ejs');
 app.use(express.static('public'));
 require('dotenv').config();
 
@@ -12,7 +11,7 @@ mongoose.set('strictQuery', true)
 
 const LoginRoutes = require('./routes/login')
 const RegisterRoutes = require('./routes/register')
-
+const Page = require('./routes/products')
 const DB_USERNAME = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASSWORD;
 
@@ -31,13 +30,8 @@ mongoose.connect(
 //rotas da aplicação com validação
 app.use('/', LoginRoutes)
 app.use('/', RegisterRoutes)
-app.get('/', (req, res) => {
+app.use('/', Page)
 
-    res.json({
-        message:'ola mundo'
-    })
-    
-})
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 })
