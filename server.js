@@ -15,7 +15,12 @@ const Page = require('./routes/products')
 const DB_USERNAME = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASSWORD;
 
-
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+  
+  
 mongoose.connect(
     `mongodb+srv://${DB_USERNAME}:${DB_PASS}@logincluster.b4mqpay.mongodb.net/?retryWrites=true&w=majority`
 )
@@ -28,14 +33,12 @@ mongoose.connect(
 
 
 //rotas da aplicação com validação
-app.use('/', LoginRoutes)
+
+app.use('/', LoginRoutes )
 app.use('/', RegisterRoutes)
 app.use('/', Page)
 
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-  });
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
