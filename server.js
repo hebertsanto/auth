@@ -11,7 +11,7 @@ mongoose.set('strictQuery', true)
 
 const LoginRoutes = require('./routes/login')
 const RegisterRoutes = require('./routes/register')
-const Page = require('./routes/products')
+const newProduct= require('./routes/products')
 const DB_USERNAME = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASSWORD;
 
@@ -36,7 +36,7 @@ mongoose.connect(
 
 app.use('/', LoginRoutes )
 app.use('/', RegisterRoutes)
-app.use('/', Page)
+app.use('/', newProduct)
 
 
 
