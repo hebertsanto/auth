@@ -3,7 +3,7 @@ const AddNewProduct = require("../models/product");
 
 router.post("/add/product", async (req, res) => {
     const { title, content, provider, data } = req.body;
-
+ 
     try {
         await AddNewProduct.create({
             title,
@@ -23,8 +23,8 @@ router.post("/add/product", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
-        const Allproducts = await AddNewProduct.find();
 
+        const Allproducts = await AddNewProduct.find();
         res.json(Allproducts);
 
 
@@ -48,4 +48,16 @@ router.delete("/product/:id", async (req, res) => {
     }
 })
 
+router.put("/product/:id", async (req, res) => {
+     try {
+         await AddNewProduct.findByIdAndUpdate(req.params.id, req.body);
+         res.status(200).json({
+            message: "Product updated successfully",
+         })
+     } catch (error) {
+        res.status(500).json({
+            message: 'algo deu errado'
+        })
+     }
+})
 module.exports = router;
