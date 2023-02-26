@@ -4,7 +4,6 @@ app.use(express.json());
 app.use(express.static('public'));
 require('dotenv').config();
 
-
 //banco de dados
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true)
