@@ -37,6 +37,6 @@ app.use('/', LoginRoutes )
 app.use('/', RegisterRoutes)
 app.use('/', newProduct)
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(3300, () => {
+    console.log('Server is running on port 3300');
 })
