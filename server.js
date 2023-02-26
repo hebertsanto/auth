@@ -14,12 +14,15 @@ const newProduct= require('./routes/products')
 const DB_USERNAME = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASSWORD;
 
+
+const PORT = process.env.PORT || 5000;
+
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   });
   
-  
+
 mongoose.connect(
     `mongodb+srv://${DB_USERNAME}:${DB_PASS}@logincluster.b4mqpay.mongodb.net/?retryWrites=true&w=majority`
 )
@@ -37,6 +40,7 @@ app.use('/', LoginRoutes )
 app.use('/', RegisterRoutes)
 app.use('/', newProduct)
 
-app.listen(3300, () => {
-    console.log('Server is running on port 3300');
+
+app.listen(PORT, () => {
+    console.log('Server is running');
 })
