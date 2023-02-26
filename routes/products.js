@@ -21,7 +21,7 @@ router.post("/add/product", async (req, res) => {
     }
 })
 
-router.get("/product", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const Allproducts = await AddNewProduct.find();
         res.json(Allproducts);
